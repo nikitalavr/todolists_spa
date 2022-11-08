@@ -56,7 +56,11 @@ export const initializeAppTC = () => (dispatch: Dispatch) => {
     if (res.data.resultCode === 0) {
       dispatch(setIsLoggedInAC(true));
       dispatch(setAppIsInitializedAC(true));
+      dispatch(setAppStatusAC("succeeded"));
     } else {
+      dispatch(setIsLoggedInAC(false));
+      dispatch(setAppStatusAC("succeeded"));
+      dispatch(setAppIsInitializedAC(true));
     }
   });
 };
@@ -69,6 +73,7 @@ export const logoutTC = () => (dispatch: Dispatch<ActionsType>) => {
         dispatch(setIsLoggedInAC(false));
         dispatch(setAppStatusAC("succeeded"));
       } else {
+        dispatch(setIsLoggedInAC(false));
         handleServerAppError(res.data, dispatch);
       }
     })

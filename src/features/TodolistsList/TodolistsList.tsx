@@ -36,6 +36,9 @@ export const TodolistsList: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (!isLoggedIn) {
+      return;
+    }
     const thunk = fetchTodolistsTC();
     dispatch(thunk);
   }, []);

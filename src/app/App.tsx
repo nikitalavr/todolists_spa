@@ -35,10 +35,9 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(initializeAppTC());
-  }, [dispatch]);
+  }, []);
 
   const onClickLogout = () => {
-    debugger;
     dispatch(logoutTC());
   };
 
